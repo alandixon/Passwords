@@ -32,6 +32,12 @@ namespace KeePass_HaveIBeenPwned
             credentials = new List<Credential>();
             StringBuilder groupNameString = new StringBuilder();
             GetCredentials(keePassFile.Root.Groups, groupNameString, credentials);
+            Console.WriteLine("Found {0} passwords in {1}", credentials.Count, options.KeePassFile);
+
+            // Sort credentials by the SHA1 hash 
+            Console.WriteLine("Sorting passwords by SHA-1 hash");
+
+            // Now we need to think how we're going to step through both files comparing
 
         }
 
