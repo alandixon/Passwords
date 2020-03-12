@@ -2,7 +2,7 @@
   "profiles": {
     "KeePass-HaveIBeenPwned": {
       "commandName": "Project",
-      "commandLineArgs": "-h X:\\Data\\Security\\MinimalHIBPlist.txt -k D:\\Source\\github\\Passwords\\Test_KP_HIBP\\TestData\\Export1.xml"
+      "commandLineArgs": "-h X:\\Data\\Security\\pwned-passwords-sha1-ordered-by-hash-v5\\pwned-passwords-sha1-ordered-by-hash-v5.txt -k D:\\Temp\\DeleteMe\\a.txt"
     }
   }
 }

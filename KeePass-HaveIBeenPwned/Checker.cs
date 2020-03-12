@@ -141,7 +141,7 @@ namespace KeePass_HaveIBeenPwned
                     Credential credential = new Credential();
                     foreach (StringPair stringPair in entry.StringPairs)
                     {
-                        if (stringPair.Key == "Password")
+                        if (stringPair.Key == "Password" && stringPair.Value.Text != null)
                         {
                             // Get the password
                             credential.Password = stringPair.Value.Text;
@@ -151,9 +151,14 @@ namespace KeePass_HaveIBeenPwned
                             // Get the group path
                             credential.Path = subGroupNameString.ToString();
                         }
+                        if (stringPair.Key == "Title")
+                        {
+                            credential.Title = stringPair.Value?.Text ?? String.Empty;
+                            credential.Path = credential.Path + " - " + credential.Title;
+                        }
                         if (stringPair.Key == "UserName")
                         {
-                            credential.UserName = stringPair.Value.Text;
+                            credential.UserName = stringPair.Value?.Text ?? String.Empty;
                             credential.Path = credential.Path + " - " + credential.UserName;
                         }
                     }

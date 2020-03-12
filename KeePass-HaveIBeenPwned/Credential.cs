@@ -13,5 +13,7 @@ namespace KeePass_HaveIBeenPwned
         public string PasswordSHA1 { get; set; }
 
         public string Path { get; set; }
+
+        public string Title { get; set; }
     }
 }

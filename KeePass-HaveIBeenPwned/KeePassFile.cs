@@ -90,10 +90,16 @@ namespace KeePass_HaveIBeenPwned
         [XmlElement(ElementName = "LastTopVisibleGroup")]
         public string LastTopVisibleGroup { get; set; }
         [XmlElement(ElementName = "Binaries")]
-        public string Binaries { get; set; }
+        public List<Group> Binary { get; set; }
         [XmlElement(ElementName = "CustomData")]
         public string CustomData { get; set; }
     }
+
+    [XmlRoot(ElementName = "Binary")]
+    public class Binary
+    {
+    }
+
 
     [XmlRoot(ElementName = "Times")]
     public class Times
