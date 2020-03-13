@@ -1,6 +1,6 @@
 ﻿# KeePass-HaveIBeenPwned
 
-A Windows .NetCore console app for checking passwords held in a KeePass file against those in [Have I Been Pwned](https://haveibeenpwned.com/)
+A Windows .Net Core console app for checking passwords held in a KeePass file against those in [Have I Been Pwned](https://haveibeenpwned.com/)
 
 ## Table of contents
 1. [Overview](#Overview)
