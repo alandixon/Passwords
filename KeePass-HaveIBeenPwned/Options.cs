@@ -13,7 +13,7 @@ namespace KeePass_HaveIBeenPwned
         [Option('k', "KeePassFile", Required = true, HelpText = "Exported KeePassXml file")]
         public string KeePassFile { get; set; }
 
-        [Option('o', "OutFile", Required = false, HelpText = "Send output here rather than stdout.")]
-        public string OutFile { get; set; }
+        //[Option('o', "OutFile", Required = false, HelpText = "Send output here rather than stdout.")]
+        //public string OutFile { get; set; }
     }
 }

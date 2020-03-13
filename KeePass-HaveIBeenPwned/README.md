@@ -1,19 +1,44 @@
 ﻿# KeePass-HaveIBeenPwned
 
-A Windows .Net console app for checking the passwords in KeePass against those in [Have I Been Pwned](https://haveibeenpwned.com/)
+A Windows .NetCore console app for checking passwords held in a KeePass file against those in [Have I Been Pwned](https://haveibeenpwned.com/)
 
 ## Table of contents
 1. [Overview](#Overview)
-2. [Versions](#Versions)
+2. [Usage](#Usage)
+3. [Versions](#Versions)
     1. [KeePass Version](#.KeePassVersion)
     2. [HaveIBeenPwned Version](#.HaveIBeenPwnedVersion)
     3. [.Net Version](#.NetVersion)
-3. [Performance](#Performance)
-4. [Credits](#Credits)
-
-
+4. [Performance](#Performance)
+5. [Credits](#Credits)
 
 ## Overview <a name="Overview"></a>
+
+Compares the passwords in an exported [KeePass](https://keepass.info/) file with those recorded by the ["Have I Been Pwned"](https://haveibeenpwned.com/) project. These are passwords that have been associated with [large data breaches](https://haveibeenpwned.com/PwnedWebsites).
+<br>This app does not attempt to identify the breach, it just identifies that matching passwords are compromised and will likely be used in attempted bad logins.
+
+## Usage <a name="Usage"></a>
+
+* Download the file "Have I been Pwned" password file from https://haveibeenpwned.com/Passwords
+<br> Note: You *MUST* use the SHA-1	(ordered by hash) file.
+<br> i.e. SHA-1, *NOT* NTLM and 
+<br>(ordered by hash), *NOT* (ordered by prevalence)
+<br>The torrent link for this file is currently [here](https://downloads.pwnedpasswords.com/passwords/pwned-passwords-sha1-ordered-by-hash-v5.7z.torrent), but this may change.
+
+* Open KeePass, load your password file and export it:
+<br> `File > Export > KeePass XML (2.x)`
+<br> Ensure you export this file somewhere safe as this holds all your cleartext passwords!
+
+* Run the KeePass-HaveIBeenPwned app with two parameters:
+<br> `-h HaveIBeenPwnedPasswordList`
+<br> `-k Exported KeePass file`
+<br> e.g. to run the .Net Core dll from the VS2017 debug or release folder:
+<br> `dotnet KeePass-HaveIBeenPwned.dll -h hibpFile -k keepassFile`
+
+* Delete your KeePass file i.e. [*shift*][delete] in file explorer, not just [delete], as that would typically put the file in the recycle bin.
+
+* If you want a standalone exe, rather than running dotnet against the dll, see
+<br> [MS docs](https://docs.microsoft.com/en-us/dotnet/core/deploying/) and/or [StackOverflow](https://stackoverflow.com/questions/44074121/build-net-core-console-application-to-output-an-exe).
 
 ## Versions <a name="Versions"></a>
 
@@ -30,7 +55,8 @@ Essentially, the pre-ordering of the file saves us having to [sort](https://www.
 .Net core 2.1 developed with VS2017
 
 ## Performance <a name="Performance"></a>
-I have 667 entries in my KeePass file (yes, I know, I've been using it for a few years) although this number should not significantly affect the run time - the main issue is reading about 550M lines from the HIBP file. The app ran in just over 4 minutes.
+I have 667 entries in my KeePass file (yes, I know, I've been using it for a few years) although this number should not significantly affect the run time - the main issue is reading ~550M lines from the HIBP file.
+<br>The app ran in just over 4 minutes on my i7 laptop with SSDs.
 
 
 ## Credits <a name="Credits"></a>
