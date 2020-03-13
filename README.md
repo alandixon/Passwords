@@ -15,19 +15,20 @@ A Windows .Net Core console app for checking passwords held in a KeePass file ag
 ## Overview <a name="Overview"></a>
 
 Compares the passwords in an exported [KeePass](https://keepass.info/) file with those recorded by the ["Have I Been Pwned"](https://haveibeenpwned.com/) project. These are passwords that have been associated with [large data breaches](https://haveibeenpwned.com/PwnedWebsites).
-<br>This app does not attempt to identify the breach, it just identifies that matching passwords are compromised and will likely be used in attempted bad logins.
+<br>This app does not attempt to identify the breach, it just identifies matching passwords that are compromised and will likely be used in attempted bad logins.
 
 ## Usage <a name="Usage"></a>
 
 * Download the file "Have I been Pwned" password file from https://haveibeenpwned.com/Passwords
 <br> Note: You *MUST* use the SHA-1	(ordered by hash) file.
-<br> i.e. SHA-1, *NOT* NTLM and 
-<br>(ordered by hash), *NOT* (ordered by prevalence)
+<br> i.e. **SHA-1**, *NOT* NTLM
+<br>and 
+<br>**(ordered by hash)**, *NOT* (ordered by prevalence)
 <br>The torrent link for this file is currently [here](https://downloads.pwnedpasswords.com/passwords/pwned-passwords-sha1-ordered-by-hash-v5.7z.torrent), but this may change.
 
 * Open KeePass, load your password file and export it:
 <br> `File > Export > KeePass XML (2.x)`
-<br> Ensure you export this file somewhere safe as this holds all your cleartext passwords!
+<br> Ensure you export this file somewhere safe as it holds all your cleartext passwords! Ensure you delete it after completion.
 
 * Run the KeePass-HaveIBeenPwned app with two parameters:
 <br> `-h HaveIBeenPwnedPasswordList`
