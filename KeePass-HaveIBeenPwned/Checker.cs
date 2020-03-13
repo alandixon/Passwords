@@ -17,6 +17,8 @@ namespace KeePass_HaveIBeenPwned
         private DateTime startTime;
         private DateTime endTime;
 
+        private string pathDelimiter = @"\";
+
 
         public Checker(Options options)
         {
@@ -133,7 +135,7 @@ namespace KeePass_HaveIBeenPwned
             {
                 // New string builder
                 StringBuilder subGroupNameString = new StringBuilder(groupNameString.ToString());
-                if (groupNameString.Length > 0) subGroupNameString.Append(" - ");
+                if (groupNameString.Length > 0) subGroupNameString.Append(pathDelimiter);
                 subGroupNameString.Append(group.Name);
 
                 foreach (Entry entry in group.Entries)
@@ -154,12 +156,12 @@ namespace KeePass_HaveIBeenPwned
                         if (stringPair.Key == "Title")
                         {
                             credential.Title = stringPair.Value?.Text ?? String.Empty;
-                            credential.Path = credential.Path + " - " + credential.Title;
+                            credential.Path = credential.Path + pathDelimiter + credential.Title;
                         }
                         if (stringPair.Key == "UserName")
                         {
                             credential.UserName = stringPair.Value?.Text ?? String.Empty;
-                            credential.Path = credential.Path + " - " + credential.UserName;
+                            credential.Path = credential.Path + pathDelimiter + credential.UserName;
                         }
                     }
                     // If we found a password (even w/o a username), save it
